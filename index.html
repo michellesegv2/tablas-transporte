@@ -16,7 +16,15 @@
   </head>
 
   <body>
-    <section class="tabla-1">
+
+    <nav>
+      <ul>
+        <li datta-tabla="tabla-1" class="active">Tabla 1</li>
+        <li datta-tabla="tabla-2">Tabla 2</li>
+      </ul>
+    </nav>
+
+    <section class="tabla tabla-1">
       <div class="container-top">
         <div class="ctn-filters">
           <div>
@@ -70,7 +78,7 @@
       </div>
     </section>
 
-    <section class="tabla-2">
+    <section class="tabla tabla-2 is-hidden">
       <div class="container-top">
         <div class="ctn-filters">
           <div>
@@ -103,7 +111,7 @@
           <span title="Exportar">import_export</span>
         </div>
       </div>
-      
+
       <!-- Contenido -->
       <div class="ctn-table">
         <table cellspacing="0">

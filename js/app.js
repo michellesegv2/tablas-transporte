@@ -1,8 +1,9 @@
 const Table = (function () {
   const data = {
-    typeSelected: false,
-    urlTable1: '/js/tabla_1.json',
-    urlTable2: '/js/tabla_2.json',
+    tabsTables: document.querySelectorAll('nav ul li'),
+    tablas: document.querySelectorAll('.tabla'),
+    urlTable1: 'js/tabla_1.json',
+    urlTable2: 'js/tabla_2.json',
     indexTabla1: [
       {
         id: "codigo",
@@ -89,7 +90,7 @@ const Table = (function () {
       {
         id: "certificado",
         name: "Certificado"
-      }, 
+      },
       {
         id: "placa",
         name: "Placa"
@@ -157,13 +158,18 @@ const Table = (function () {
     ]
   };
 
-  // const events = {
-  //   example: function () {
-  //     data.example.addEventListener('click', () => {
+  const events = {
+    onTabsTable: function (elem) {
+      elem.addEventListener('click', (e) => {
+        data.tabsTables.forEach((e) => { e.classList.remove('active') })
+        data.tablas.forEach((e) => { e.classList.add('is-hidden') })
 
-  //     });
-  //   }
-  // };
+        e.target.classList.add('active')
+        console.log(document.querySelector(`.${table}`))
+        document.querySelector(`.${table}`).classList.remove('is-hidden')
+      });
+    }
+  };
 
   const methods = {
     queryAxios: function (_url, _callback) {
@@ -247,8 +253,14 @@ const Table = (function () {
   };
 
   const initialize = function () {
+    // Creando tablas en base al json
     methods.getDataTable(data.urlTable1, 'tabla-1', data.indexTabla1)
     methods.getDataTable(data.urlTable2, 'tabla-2', data.indexTabla2)
+
+    // Evento de tabs
+    data.tabsTables.forEach((e) => {
+      events.onTabsTable(e)
+    })
   };
 
   return {
