@@ -1,0 +1,224 @@
+/* generales */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-primary);
+  box-sizing: border-box;
+}
+body {
+  padding: 50px;
+}
+.tabla-1 {
+  margin-bottom: 50px;
+}
+
+/* primera sección */
+.container-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 35px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 0 15px;
+}
+.ctn-filters {
+  display: flex;
+}
+.ctn-filters > div {
+  margin-right: 20px;
+}
+.ctn-filters span {
+  font-size: 6px;
+  color: var(--color-gray-strong);
+  margin-right: 10px;
+  font-weight: 500;
+}
+.ctn-filters select, .ctn-filters input {
+  font-size: var(--fonts-size-tabla);
+  line-height: 6px;
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid var(--color-gray-tooltip);
+  color: #999999;
+}
+.ctn-options span,
+tbody tr td .more-ops span {
+  font-family: "Material Icons";
+  cursor: pointer;
+  text-transform: none;
+}
+.ctn-options span {
+  display: inline-block;
+  position: relative;
+  color: #b3b3b3;
+}
+.ctn-options span:hover:after {
+  display: flex;
+  justify-content: center;
+  background: var(--color-primary-light);
+  border-radius: 3px;
+  color: var(--color-options);
+  content: attr(title);
+  font-size: var(--fonts-size-opciones);
+  padding: 4px 10px;
+  border: 1px solid var(--color-options);
+  width: 45px;
+  font-family: var(--font-primary);
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+}
+.ctn-options span:hover:before {
+  border: solid;
+  border-color: var(--color-options) transparent;
+  border-width: 12px 6px 0 6px;
+  content: "";
+  left: 20%;
+  bottom: 15px;
+  position: absolute;
+  font-family: var(--font-primary);
+}
+
+/* tabla */
+.ctn-table {
+  max-width: calc(100% - 10px);
+  overflow: auto;
+  margin: auto;
+}
+table {
+  width: 100%;
+  font-size: var(--fonts-size-tabla);
+}
+table tr {
+  height: 35px;
+}
+table thead tr {
+  background-color: var(--color-primary-light);
+}
+table thead tr td {
+  text-align: center;
+  min-width: 50px;
+}
+.table-1 table thead tr td::after {
+  content: "keyboard_arrow_down";
+  font-family: "Material Icons";
+  position: relative;
+  top: 1px;
+  margin-left: 5px;
+  display: inline-block;
+}
+table tbody.hide-inputs tr:first-child {
+  display: none;
+}
+table tbody tr:first-child {
+  height: auto;
+}
+table tbody tr:first-child input {
+  height: 15px;
+  font-size: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 0.5px solid var(--color-gray-strong);
+  border-radius: 3px;
+  padding: 2.5px;
+  margin: 5px 0;
+}
+table tbody tr:nth-child(2n) {
+  background-color: var(--color-primary);
+}
+table tbody tr td {
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0 5px;
+}
+
+/* Más opciones */
+.more-ops {
+  position: relative;
+  display: inline-block;
+}
+.more-ops .circles {
+  font-size: 5px;
+  color: var(--color-gray-strong);
+  display: inline-block;
+  min-width: 20px;
+}
+.more-ops > div:last-child {
+  display: none;
+  border: 1px solid var(--color-gray-tooltip);
+  padding: 10px;
+  width: 125px;
+  border-radius: 8px;
+  position: absolute;
+  top: 2px;
+  right: -2.5px;
+  background-color: var(--color-primary-light);
+  z-index: 1;
+  margin-top: 10px;
+}
+.more-ops > div:last-child::before {
+  content: "";
+  border: solid;
+  border-color: var(--color-gray-tooltip) transparent;
+  border-width: 0 6px 10px 6px;
+  position: absolute;
+  top: -10px;
+  right: 11.5px;
+}
+.more-ops > div:last-child::after {
+  content: "";
+  border: solid;
+  border-color: var(--color-primary-light) transparent;
+  border-width: 0 5px 9px 5px;
+  position: absolute;
+  top: -8px;
+  right: 12.5px;
+}
+.more-ops:hover .circles + div {
+  display: inline-block;
+}
+.more-ops ul {
+  list-style: none;
+}
+.more-ops ul {
+  font-size: 5px;
+  color: var(--color-gray-strong);
+}
+.more-ops ul li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+.more-ops ul span {
+  font-size: 15px;
+  margin-right: 10px;
+  color: #b3b3b3;
+}
+
+@media (max-width: 768px) {
+  /* generales */
+  body {
+    padding: 20px;
+  }
+
+  /* primera sección */
+  .container-top {
+    flex-wrap: wrap;
+    height: auto;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .ctn-filters {
+    width: 100%;
+    min-width: 100%;
+    margin-bottom: 10px;
+  }
+  .ctn-filters > div {
+    margin-right: 5px;
+  }
+  .ctn-filters > div:last-child {
+    margin-right: 0;
+  }
+}
