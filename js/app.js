@@ -165,10 +165,18 @@ const Table = (function () {
         data.tablas.forEach((e) => { e.classList.add('is-hidden') })
 
         e.target.classList.add('active')
-        
+
         const table = e.target.getAttribute('datta-tabla')
         document.querySelector(`.${table}`).classList.remove('is-hidden')
       });
+    },
+    showMoreOptions: function (elem) {
+      elem.addEventListener('click', (e) => {
+        // document.querySelectorAll('.more-ops div').forEach((e) => { e.classList.remove('show') })
+        const parent = e.target.parentNode.classList.contains('more-ops') ? e.target.parentNode : e.target.parentNode.parentNode
+        const tooltip = parent.children[1]
+          tooltip.classList.toggle('show')
+      })
     }
   };
 
@@ -222,6 +230,7 @@ const Table = (function () {
         renderInput ? tBody.appendChild(rowInputs) : true
         tBody.appendChild(row);
       }
+      if (_table == 'tabla-1') document.querySelectorAll('.more-ops').forEach((e) => { events.showMoreOptions(e) })
     },
     makeTableHeader: function (_data, _table) {
       const lengthHeader = _data.length;
