@@ -198,7 +198,10 @@ table tbody tr td {
   top: -8px;
   right: 12.5px;
 }
-.more-ops:hover .circles + div {
+/* .more-ops:hover .circles + div {
+  display: inline-block;
+} */
+.more-ops div.show{
   display: inline-block;
 }
 .more-ops ul {
