@@ -165,7 +165,8 @@ const Table = (function () {
         data.tablas.forEach((e) => { e.classList.add('is-hidden') })
 
         e.target.classList.add('active')
-        console.log(document.querySelector(`.${table}`))
+        
+        const table = e.target.getAttribute('datta-tabla')
         document.querySelector(`.${table}`).classList.remove('is-hidden')
       });
     }
