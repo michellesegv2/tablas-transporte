@@ -172,10 +172,10 @@ const Table = (function () {
     },
     showMoreOptions: function (elem) {
       elem.addEventListener('click', (e) => {
-        // document.querySelectorAll('.more-ops div').forEach((e) => { e.classList.remove('show') })
         const parent = e.target.parentNode.classList.contains('more-ops') ? e.target.parentNode : e.target.parentNode.parentNode
         const tooltip = parent.children[1]
-          tooltip.classList.toggle('show')
+        !tooltip.classList.contains('show') ? document.querySelectorAll('.more-ops div').forEach((e) => { e.classList.remove('show') }) : true
+        tooltip.classList.toggle('show')
       })
     }
   };
