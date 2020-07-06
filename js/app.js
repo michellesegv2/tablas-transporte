@@ -1,8 +1,8 @@
 const Table = (function () {
   const data = {
     typeSelected: false,
-    urlTable1: '/js/tabla_1.json',
-    urlTable2: '/js/tabla_2.json',
+    urlTable1: 'index.html/js/tabla_1.json',
+    urlTable2: 'index.html/js/tabla_2.json',
     indexTabla1: [
       {
         id: "codigo",
