@@ -2,6 +2,8 @@ const Table = (function () {
   const data = {
     tabsTables: document.querySelectorAll('nav ul li'),
     tablas: document.querySelectorAll('.tabla'),
+    selects: document.querySelectorAll('.container-select'),
+    opsSelect: document.querySelectorAll('.container-select ul li'),
     urlTable1: 'js/tabla_1.json',
     urlTable2: 'js/tabla_2.json',
     indexTabla1: [
@@ -163,9 +165,7 @@ const Table = (function () {
       elem.addEventListener('click', (e) => {
         data.tabsTables.forEach((e) => { e.classList.remove('active') })
         data.tablas.forEach((e) => { e.classList.add('is-hidden') })
-
         e.target.classList.add('active')
-
         const table = e.target.getAttribute('datta-tabla')
         document.querySelector(`.${table}`).classList.remove('is-hidden')
       });
@@ -176,6 +176,26 @@ const Table = (function () {
         const tooltip = parent.children[1]
         !tooltip.classList.contains('show') ? document.querySelectorAll('.more-ops div').forEach((e) => { e.classList.remove('show') }) : true
         tooltip.classList.toggle('show')
+      })
+    },
+    showOptionesSelect: function (elem) {
+      elem.addEventListener('click', (e) => {
+        const container = e.target.classList.contains('select') ? e.target.parentNode : e.target.parentNode.parentNode
+        container.classList.toggle('active')
+      })
+    },
+    selectedOption: function (elem) {
+      elem.addEventListener('click', (e) => {
+        const text = e.target.innerText
+        const textSelected = e.target.parentNode.parentNode.children[0].children[0]
+        textSelected.innerText = text
+      })
+    },
+    hideSelect: function () {
+      document.addEventListener('click', (e) => {
+        if (!e.target.classList.contains('select')) {
+          data.selects.forEach((e) => { e.classList.remove('active') })
+        }
       })
     }
   };
@@ -271,6 +291,15 @@ const Table = (function () {
     data.tabsTables.forEach((e) => {
       events.onTabsTable(e)
     })
+
+    // Evento select
+    data.selects.forEach((e) => {
+      events.showOptionesSelect(e)
+    })
+    data.opsSelect.forEach((e) => {
+      events.selectedOption(e)
+    })
+    events.hideSelect()
   };
 
   return {
