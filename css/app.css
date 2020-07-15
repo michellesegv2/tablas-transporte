@@ -45,12 +45,15 @@ nav ul li.active {
   justify-content: space-between;
   align-items: center;
   height: 35px;
-  background-color: #f9f9f9;
-  border-bottom: 1px solid #e6e6e6;
+  background-color: #d3f4ff;
+  border-bottom: 2px solid #9dd8fa;
   padding: 0 15px;
+  position: relative;
 }
 .ctn-filters {
   display: flex;
+  width: calc(100% - 200px);
+  min-width: calc(100% - 200px);
 }
 .ctn-filters > div {
   margin-right: 20px;
@@ -76,10 +79,29 @@ tbody tr td .more-ops span {
   cursor: pointer;
   text-transform: none;
 }
+.ctn-options {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+}
 .ctn-options span {
   display: inline-block;
   position: relative;
-  color: #b3b3b3;
+  color: #9dd8fa;
+  height: calc(100% + 2px);
+  line-height: 32px;
+  min-width: 33px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ctn-options span:hover {
+  background-color: #f1f1f1;
+  border-bottom: 2px solid #17375f;
+  color: #17375f;
 }
 .ctn-options span:hover:after {
   display: flex;
@@ -89,13 +111,14 @@ tbody tr td .more-ops span {
   color: var(--color-options);
   content: attr(title);
   font-size: var(--fonts-size-opciones);
-  padding: 4px 10px;
+  padding: 3px 10px;
   border: 1px solid var(--color-options);
   width: 45px;
   font-family: var(--font-primary);
   position: absolute;
-  bottom: 20px;
+  bottom: 30px;
   left: 0;
+  line-height: 9px;
 }
 .ctn-options span:hover:before {
   border: solid;
@@ -103,9 +126,37 @@ tbody tr td .more-ops span {
   border-width: 12px 6px 0 6px;
   content: "";
   left: 20%;
-  bottom: 15px;
+  bottom: 25px;
   position: absolute;
   font-family: var(--font-primary);
+}
+@media (max-width: 700px) {
+  .ctn-options span:hover:after {
+    top: -5px;
+    bottom: initial;
+  }
+  .ctn-options span:hover:before {
+    bottom: initial;
+    top: 5px;
+  }
+}
+@media (max-width: 480px) {
+  .ctn-filters {
+    width: 100%;
+  }
+  .ctn-options {
+    position: static;
+    margin: auto;
+    margin-bottom: -2px;
+  }
+  .ctn-options span:hover:after {
+    bottom: 30px;
+    top: initial;
+  }
+  .ctn-options span:hover:before {
+    top: initial;
+    bottom: 25px;
+  }
 }
 
 /* select */
@@ -216,6 +267,7 @@ table tbody tr td {
 .more-ops {
   position: relative;
   display: inline-block;
+  text-transform: initial;
 }
 .more-ops .circles {
   font-size: 5px;
@@ -226,7 +278,7 @@ table tbody tr td {
 .more-ops > div:last-child {
   display: none;
   border: 1px solid var(--color-gray-tooltip);
-  padding: 10px;
+  padding: 8px;
   width: 125px;
   border-radius: 8px;
   position: absolute;
@@ -240,18 +292,18 @@ table tbody tr td {
   content: "";
   border: solid;
   border-color: var(--color-gray-tooltip) transparent;
-  border-width: 0 6px 10px 6px;
+  border-width: 0 6px 7px 6px;
   position: absolute;
-  top: -10px;
+  top: -8px;
   right: 11.5px;
 }
 .more-ops > div:last-child::after {
   content: "";
   border: solid;
   border-color: var(--color-primary-light) transparent;
-  border-width: 0 5px 9px 5px;
+  border-width: 0 5px 6.5px 5px;
   position: absolute;
-  top: -8px;
+  top: -6px;
   right: 12.5px;
 }
 .more-ops div.show {
@@ -269,6 +321,12 @@ table tbody tr td {
   align-items: center;
   justify-content: flex-start;
   cursor: pointer;
+}
+.more-ops ul li:hover {
+  color: #17375f;
+}
+.more-ops ul li:hover span {
+  color: #17375f;
 }
 .more-ops ul span {
   font-size: 15px;
@@ -299,14 +357,27 @@ table tbody tr td {
     align-items: center;
   }
   .ctn-filters {
-    width: 100%;
-    min-width: 100%;
+    margin-top: 10px;
     margin-bottom: 10px;
   }
   .ctn-filters > div {
     margin-right: 5px;
     width: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
   }
+  .ctn-filters > div > span {
+    margin-bottom: 5px;
+  }
+  .container-select {
+    max-width: 70px;
+    /* max-height: 15px; */
+  }
+  /* .container-select .select{
+    max-height: 15px;
+  } */
   .ctn-filters > div:last-child {
     margin-right: 0;
   }
